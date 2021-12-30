@@ -1,0 +1,9 @@
+main: ayano.MMOCOREConsumeManaStamina.MMOCOREConsumeManaStamina
+version: 0.0.1
+author: ayano
+depend: [MMOCore]
+name: MMOCORECONSUME
+loadbefore: [MythicLib]
+commands:
+      mex:
+         description: consume

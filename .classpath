@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-16">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/servertest/plugins/MMOCore-1.8.2.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/servertest/plugins/MythicLib-1.1.5.jar" sourcepath="C:/Users/ejane/Downloads/servertest/plugins/MythicLib-1.1.5.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/servertest/server.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/servertest/plugins/MMOItems-6.6.4.jar" sourcepath="C:/Users/ejane/Desktop/mmoitems-master/src">
+		<attributes>
+			<attribute name="javadoc_location" value="https://git.lumine.io/mythiccraft/mmoitems/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/servertest/plugins/item-nbt-api-plugin-2.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/servertest/plugins/PlaceholderAPI-2.10.10.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
