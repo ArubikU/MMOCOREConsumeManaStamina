@@ -16,11 +16,15 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.jetbrains.annotations.NotNull;
 
 import ayano.MMOExpansion.MMOExpansion;
 import ayano.MMOExpansion.cmd.mex;
 import ayano.MMOExpansion.cmd.sns;
+import ayano.MMOExpansion.eventlisteners.ItemPlaceholderUpdater;
+import ayano.MMOExpansion.eventlisteners.MythicListener;
 import ayano.MMOExpansion.utils.invs.inventoryes;
 import ayano.MMOExpansion.utils.mmoitems.snsstat;
 import io.lumine.mythic.lib.api.crafting.ingredients.MythicBlueprintInventory;
@@ -49,8 +53,16 @@ import net.Indyuce.mmoitems.stat.type.ItemStat;
 public class utils {
 	public static MMOItems mi;
 	public static ItemStat snsstat;
-	public static FileConfiguration config = MMOExpansion.getPlugin().getConfig();
 	public static MMOExpansion plugin = MMOExpansion.getPlugin();
+	//public static FileConfiguration config = cfg("");
+	
+	public static Boolean reload() {
+		try {
+		plugin.reloadConfig();
+		return true;} catch (Exception e) {
+			return false;
+		}
+	}
 	
 	public static Boolean loadexpansion() {
         	snsstat = new snsstat();
@@ -62,12 +74,14 @@ public class utils {
 	}
 	
 	public static Boolean createconfig() {
+		/*
 		config.set("config.enabled-papi-replace", true);
 		config.set("config.papi-options.OnInventoryMove", false);
 		config.set("config.papi-options.OnPickup", true);
 		config.set("config.sns.nbttag", "CUSTOM_SELL");
 		config.set("config.sns.ECOCMD", "eco give %player% %money%");
 		plugin.saveConfig();
+		*/
 		return true;
 	}
 	
@@ -225,33 +239,33 @@ public class utils {
 			 * 
 			 * */
 			normal.setItem(0, recipec.get(0)); //ok
-			normal.setItem(1, recipec.get(1));
-			normal.setItem(2, recipec.get(2));
-			normal.setItem(3, recipec.get(3));
-			normal.setItem(4, recipec.get(4));
+			normal.setItem(1, recipec.get(5)); //9
+			normal.setItem(2, recipec.get(10)); //18
+			normal.setItem(3, recipec.get(15)); //27
+			normal.setItem(4, recipec.get(20)); //36
 			
-			normal.setItem(9, recipec.get(5)); //1
+			normal.setItem(9, recipec.get(1)); //1
 			normal.setItem(10, recipec.get(6));
-			normal.setItem(11, recipec.get(7));
-			normal.setItem(12, recipec.get(8));
-			normal.setItem(13, recipec.get(9));
+			normal.setItem(11, recipec.get(11));
+			normal.setItem(12, recipec.get(16));
+			normal.setItem(13, recipec.get(21));
 			
-			normal.setItem(18, recipec.get(10));//2
-			normal.setItem(19, recipec.get(11));
+			normal.setItem(18, recipec.get(2));//2
+			normal.setItem(19, recipec.get(7));
 			normal.setItem(20, recipec.get(12));
-			normal.setItem(21, recipec.get(13));
-			normal.setItem(22, recipec.get(14));
+			normal.setItem(21, recipec.get(17));
+			normal.setItem(22, recipec.get(22));
 
-			normal.setItem(27, recipec.get(15));//3
-			normal.setItem(28, recipec.get(16));
-			normal.setItem(29, recipec.get(17));
+			normal.setItem(27, recipec.get(3));//3
+			normal.setItem(28, recipec.get(8));
+			normal.setItem(29, recipec.get(13));
 			normal.setItem(30, recipec.get(18));
-			normal.setItem(31, recipec.get(19));
+			normal.setItem(31, recipec.get(23));
 
-			normal.setItem(36, recipec.get(20));//4
-			normal.setItem(37, recipec.get(21));
-			normal.setItem(38, recipec.get(22));
-			normal.setItem(39, recipec.get(23));
+			normal.setItem(36, recipec.get(4));//4
+			normal.setItem(37, recipec.get(9));
+			normal.setItem(38, recipec.get(14));
+			normal.setItem(39, recipec.get(19));
 			normal.setItem(40, recipec.get(24)); //ok
 			
 			p.openInventory(normal);
@@ -280,6 +294,11 @@ public class utils {
 		return new NamespacedKey(MMOItems.plugin, recipeType + "_" + type.getId() + "_" + id + "_" + number);
 	}
 	
+	
+	public static void savecfg() {
+		plugin.saveConfig();
+	}
+	
 
 	public static String errorperm(String permission) {
 		String message = ChatColor.translateAlternateColorCodes('&', "&c[&6MMO&eExpansion&c] &7te hace falta el permiso " + permission);
@@ -298,20 +317,7 @@ public class utils {
 		cs.sendMessage(messageext("&7mex <mana/stamina> <player> <value>"));
 		cs.sendMessage(messageext("&7Sirve para poder restar mana o stamina del mmocore"));
 		cs.sendMessage(messageext("&7mex mrecipe <itemID>"));
-		cs.sendMessage(messageext("&7Sirve para poder ver la receta de un mmoitem &6Proximamente"));
-		cs.sendMessage(messageext("&7&m--------------->"));
-		return true;}
-		catch (Exception e) {return false;}
-	}
-
-	public static boolean messagehelpp(Player cs) {
-		try {
-		cs.sendMessage(messageext("&7&m--------------->"));
-		cs.sendMessage(messageext("&cAyuda  / Help"));
-		cs.sendMessage(messageext("&7mex <mana/stamina> <player> <value>"));
-		cs.sendMessage(messageext("&7Sirve para poder restar mana o stamina del mmocore"));
-		cs.sendMessage(messageext("&7mex mrecipe <itemID>"));
-		cs.sendMessage(messageext("&7Sirve para poder ver la receta de un mmoitem &6Proximamente"));
+		cs.sendMessage(messageext("&7Sirve para poder ver la receta de un mmoitem &6Funcionando!"));
 		cs.sendMessage(messageext("&7&m--------------->"));
 		return true;}
 		catch (Exception e) {return false;}

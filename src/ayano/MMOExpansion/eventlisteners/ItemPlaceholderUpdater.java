@@ -1,4 +1,4 @@
-package ayano.MMOExpansion.utils;
+package ayano.MMOExpansion.eventlisteners;
 
 import java.util.List;
 
@@ -13,9 +13,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
 import ayano.MMOExpansion.MMOExpansion;
+import ayano.MMOExpansion.utils.utils;
 import me.clip.placeholderapi.PlaceholderAPI;
 
-public class eventlistener implements Listener {
+public class ItemPlaceholderUpdater implements Listener {
 
 	MMOExpansion plugin = MMOExpansion.getPlugin();
 

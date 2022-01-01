@@ -23,6 +23,12 @@ import io.lumine.mythic.lib.api.crafting.recipes.MythicRecipeBlueprint;
 import io.lumine.mythic.lib.api.crafting.recipes.MythicRecipeStation;
 
 public class mex implements TabExecutor {
+	
+	MMOExpansion plugin;
+	
+	public mex(MMOExpansion pl) {
+		this.plugin = pl;
+	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
@@ -134,16 +140,25 @@ public class mex implements TabExecutor {
 			        	}
 			        	return false;
 			        }
-				} else if (args[0].equalsIgnoreCase("itemmeta")) {
+				} else if (args[0].equalsIgnoreCase("reload")) {
 
 	        		Player p = (Player) sender;
-	        		if(p.hasPermission("mmoextension.itemmeta") || p.isOp() || p.hasPermission("mmoextension.*") || p.hasPermission("*"))
+	        		if(p.hasPermission("mmoextension.reload") || p.isOp() || p.hasPermission("mmoextension.*") || p.hasPermission("*"))
 	        		{
-	        			p.sendMessage(p.getItemInHand().getItemMeta().toString());
-	        			return true;
+	        			utils.savecfg();
+	        			Boolean run = utils.reload();
+	        			if(run = true) {
+	        				utils.loadexpansion();
+	        				MMOExpansion.getPlugin().onLoad();
+	        				
+	        				p.sendMessage(utils.messageext("&cConfiguracion Recargada"));
+	        			} else {
+	        				p.sendMessage(utils.messageext("&cOcurrio un error"));
+	        			}
+	        			return run;
 	        			
 	        		} else {
-	        			p.sendMessage(utils.errorperm("mmoextension.itemmeta"));
+	        			p.sendMessage(utils.errorperm("mmoextension.reload"));
 	        			return true;}
 				}
 					else if (args[0].equalsIgnoreCase("mrecipe")) {
@@ -156,7 +171,6 @@ public class mex implements TabExecutor {
 		        			MythicRecipe MRecipe = utils.getRecipeMythic(args[1]);
 			        		HashMap<Integer, ItemStack> Recipe = utils.getRecipe(args[1]);
 			        		utils.generatePreview(Recipe, p, MRecipe);
-			        		p.sendMessage(Recipe.size() + "");
 		        			
 		        		} else {
 		        			p.sendMessage(utils.errorperm("mmoextension.mrecipe"));
@@ -194,7 +208,7 @@ public class mex implements TabExecutor {
 		        	if(sender instanceof Player)
 		        	{
 		        		Player p = (Player) sender;
-		        		utils.messagehelpp(p);
+		        		messagehelpp(p);
 		        	} else {
 		        		utils.messagehelpc(Bukkit.getConsoleSender());
 		        	}
@@ -204,7 +218,7 @@ public class mex implements TabExecutor {
         	if(sender instanceof Player)
         	{
         		Player p = (Player) sender;
-        		utils.messagehelpp(p);
+        		messagehelpp(p);
         	} else {
         		utils.messagehelpc(Bukkit.getConsoleSender());
         	}
@@ -219,7 +233,7 @@ public class mex implements TabExecutor {
 			 list.add("mrecipe");
 			 list.add("model");
 			 list.add("stamina");
-			 list.add("itemmeta");
+			 list.add("reload");
 
 			 Collections.sort(list);
 			 
@@ -264,4 +278,17 @@ public class mex implements TabExecutor {
 		 return MMOExpansion.listes;
 	 }
 	
+
+		public boolean messagehelpp(Player cs) {
+			try {
+				List<String> helplist = plugin.getConfig().getStringList("config.message-help");
+				
+				for(int i = 0; i < helplist.size(); i++){
+					cs.sendMessage(helplist.get(i));
+				}
+			
+			return true;}
+			catch (Exception e) {return false;}
+		}
+	 
 }
