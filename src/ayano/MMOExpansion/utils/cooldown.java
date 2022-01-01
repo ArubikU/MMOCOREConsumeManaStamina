@@ -1,6 +1,6 @@
-package ayano.MMOCOREConsumeManaStamina.utils;
+package ayano.MMOExpansion.utils;
 
-import ayano.MMOCOREConsumeManaStamina.MMOCOREConsumeManaStamina;
+import ayano.MMOExpansion.MMOExpansion;
 
 public class cooldown {
 	
@@ -8,7 +8,7 @@ public class cooldown {
 	int time;
 
 	@SuppressWarnings("unused")
-	private MMOCOREConsumeManaStamina plugin = MMOCOREConsumeManaStamina.getPlugin();
+	private MMOExpansion plugin = MMOExpansion.getPlugin();
 	
 	/*public void cooldownExecute(String Taks, int ticks) {
 		BukkitScheduler scheduler = Bukkit.getServer().getScheduler();

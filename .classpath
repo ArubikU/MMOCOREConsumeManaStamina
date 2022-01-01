@@ -28,5 +28,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/servertest/plugins/item-nbt-api-plugin-2.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/servertest/plugins/PlaceholderAPI-2.10.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ejane/Downloads/ItemsAdder.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

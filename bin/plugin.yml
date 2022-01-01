@@ -1,9 +1,11 @@
-main: ayano.MMOCOREConsumeManaStamina.MMOCOREConsumeManaStamina
+main: ayano.MMOExpansion.MMOExpansion
 version: 0.0.1
 author: ayano
-depend: [MMOCore]
-name: MMOCORECONSUME
-loadbefore: [MythicLib]
+api-version: 1.13
+name: MMOExpansion
+loadbefore: [MythicLib,MMOCore,MMOItems,PlaceholerAPI]
 commands:
       mex:
          description: consume
+      sns:
+         description: sell

@@ -1,4 +1,4 @@
-package ayano.MMOCOREConsumeManaStamina.utils;
+package ayano.MMOExpansion.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,1 +1,8 @@
 config:
+  enabled-papi-replace: true
+  papi-options:
+    OnInventoryMove: false
+    OnPickup: true
+  sns:
+    nbttag: CUSTOM_SELL
+    ECOCMD: eco give %player% %money%
